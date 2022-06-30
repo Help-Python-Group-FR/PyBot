@@ -24,4 +24,4 @@ All you have to do is be on <a href="https://discord.gg/GmHEZz9GGv">my Discord S
   
 ## The conventions
   
-If you wan't to append your code, you will have to respect some conventions, click here to see them.
+If you wan't to append your code, you will have to respect some conventions, <a href="https://github.com/Help-Python-Group-FR/PyBot/blob/main/code/conventions.md">click here<a> to see them.
