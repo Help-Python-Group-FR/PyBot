@@ -39,3 +39,21 @@ async def ban(...):
   ...
   
 ```
+
+## Easly readable
+
+Do I realy need to say that ? Your code must contains comments and don't be hard to understand, the comments are very usefull because we need to understand what happend in your function ! Look :
+
+```python
+def sendMessage(message, member):
+  """
+  The doc...
+  """
+  
+  member.send(message) # Send a message to the member
+  
+```
+
+## No errors !!!!
+
+YOUR CODE MUSN'T CONTAINS ERRORS !!!!!!
