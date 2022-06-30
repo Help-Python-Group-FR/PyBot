@@ -2,58 +2,58 @@
 
 Pour upload ton code tu vas avoir besoin de savoir des choses très importantes ! Sinon on ne va pas ajouter ta fonction ! :(
 
-## Document your functions !
+## Documenter vos fonctions !
 
-You will need to document your functions because if someone wants to use your code he will needs to understand ! So let's see how to make a good documentation !
+Il fait documenter vos fonction car comme le dit [Guido van Rossum](https://fr.wikipedia.org/wiki/Guido_van_Rossum), *"le code est plus souvent lu qu'écrit"*
 
 ```python
 def sendMessage(message, member):
   """
-  (The description of your function)
-  This function will send a message to a member.
+  (La description de votre fonction)
+  Cette fonction va envoyer un message à un membre
   
-  Use it like that : sendMessage(message, member)
+  Syntaxe : sendMessage(message, member)
   
-  message -> Your message. (Type : Str)
-  member -> The member who will get your message. (Type : discord.Member)
+  message -> Le message. (Type : Texte)
+  member -> Le membre. (Type : discord.Member)
   """
   
-  #Your code...
+#Your code...
 ```
 
-## Add to help
+## Implémenter au help
 
-Now you know how to document a function, but the users of the Bot doesn't know that this command exists because it's not on the help message ! Don't worry we have a function for this ;-)
+Une commande n'existe pas si elle n'est pas affichée au help, nous développeur, nous qui avons accès au code, nous qui voyons le code, les membres ne le voient pas.
 
-It's called help_append and it takes 3 parametres :
-- type : The type of your command (mod/fun/use)
-- name : The name of your command
-- value : The description of your command
+La fonction se nomme `help_append()` et doit remplir trois critères :
+- type : Le type de la commande (mod/fun/use)
+- name : Le nom de votre commande
+- value : La desciption de votre commande
 
-This command must be before your command in the code ! Now let's see how it works !
+La fonction doit être **avant** la commande !
 
 ```python
-help_append("mod", "ban", "This function ban a member !\nHow to use : `/ban <member> (reason)`\nRequired Permission : Ban Members")
+help_append("mod", "ban", "Cette fonction va bannir un membre !\nSyntaxe : `/ban <member> (reason)`\nPremission requise : `Ban Members`")
 @slash.slash(...)
 async def ban(...):
   ...
   
 ```
 
-## Easily readable
+## Explicite qu'implicite
 
-Do I realy need to say that ? Your code must contains comments and don't be hard to understand, the comments are very usefull because we need to understand what happend in your function ! Look :
+Ai-je vraiment besoin de le dire ? Votre code doit contenir des commentaires et ne doit pas être difficile à comprendre, les commentaires sont très utiles car nous devons comprendre ce qui se passe dans votre fonction ! Regardez :
 
 ```python
 def sendMessage(message, member):
   """
-  The doc...
+  Cette fonction va envoyer un message à un membre...
   """
   
-  member.send(message) # Send a message to the member
+  member.send(message) # Envoie le message au membre
   
 ```
 
-## No errors !!!!
+## Chasseur d'erreur
 
-YOUR CODE MUSN'T CONTAINS ERRORS !!!!!!
+Si le chasseur repère des erreurs, il les abat, mais le chasseur est vieux, alors assurez-vous de produire un code sans erreur !
