@@ -1,6 +1,6 @@
-# The conventions
+# Les conventions
 
-To upload your code you will need to know some very important things ! Else we aren't going to append your function ! :(
+Pour upload ton code tu vas avoir besoin de savoir des choses très importantes ! Sinon on ne va pas ajouter ta fonction ! :(
 
 ## Document your functions !
 
