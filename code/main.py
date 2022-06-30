@@ -9,6 +9,17 @@ client.remove_command('help')
 help_commands = {}
 
 
+print("test")
+print("test")
+print("test")
+print("test")
+print("test")
+print("test")
+print("test")
+print("test")
+print("test")
+
+
 class MyEmbed:
 	def __init__(self, ctx, title, description, color=discord.Color.dark_blue()):
 		self.embed = discord.Embed(title=title, description=description, color=color)
