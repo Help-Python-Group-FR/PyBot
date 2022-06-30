@@ -40,7 +40,7 @@ async def ban(...):
   
 ```
 
-## Easly readable
+## Easily readable
 
 Do I realy need to say that ? Your code must contains comments and don't be hard to understand, the comments are very usefull because we need to understand what happend in your function ! Look :
 
