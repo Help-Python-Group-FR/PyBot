@@ -1,12 +1,16 @@
 import discord
 from discord.ext import commands
+from discord_slash import SlashCommand, SlashContext
+from discord_slash.utils.manage_components import *
+from discord_slash.utils.manage_components import create_choice, create_option
 
 from time import sleep
 
 prefix = ""
 client = commands.Bot(command_prefix=prefix)
 client.remove_command('help')
-help_commands = {}
+slash = SlashCommand(client, sync_commands=True)
+help_commands = {"mod":[], "fun":[], "use":[]}
 
 
 class MyEmbed:
