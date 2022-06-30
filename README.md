@@ -1,27 +1,36 @@
 # PyBot
-This is the PyBot of <a href="https://discord.gg/GmHEZz9GGv">my Discord Server<a> !
+Le bot open source Python de [notre serveur Discord](https://discord.gg/GmHEZz9GGv)
 
-## What's going to be on this Bot ?
+## Que va-t-il y avoir sur ce Bot ?
 
-There will be :
-- a ban command;
-- a kick command;
-- a clear command;
-- a clearall command;
-- a help command;
-- a problem command;
-- funs games commands;
-- rank levels;
-- And more...
+Il va y avoir :
+- une commande de ban;
+- une commande de kick;
+- une commande de clear;
+- une commande de purge;
+- une commande de help;
+- une commande de problème;
+- des commandes dite mini-jeux;
+- des niveaux;
+- Et bien plus...
 
-## Who's gonna make it ?
+## Qui est son développeur ?
 
-All the members of <a href="https://discord.gg/GmHEZz9GGv">my Discord Server<a> that know how to use <a href="https://discordpy.readthedocs.io/en/stable/">discord.py<a> !
+Oups, faute d'orthographe...
 
-## How to help to make this Bot ?
+### Qui sont leurs développeurs ?
 
-All you have to do is be on <a href="https://discord.gg/GmHEZz9GGv">my Discord Server<a> and then go to <a href="https://github.com/Help-Python-Group-FR/PyBot/blob/main/code/main.py">this file<a> and click **E** or edit the file when you have finished, pull a request by selecting "Create a new branch for this commit and start a pull request." write you have done, make a description, give your Discord pseudo and we will check your code to see if we merge it or not !
-  
-## The conventions
-  
-If you wan't to append your code, you will have to respect some conventions, <a href="https://github.com/Help-Python-Group-FR/PyBot/blob/main/code/conventions.md">click here<a> to see them.
+Tout les membres du [serveur Discord](https://discord.gg/GmHEZz9GGv) ont le droit de contribuer à la création de ce bot !
+
+## Comment aider à la création du bot ?
+
+1. **Rejoindre** le [serveur Discord](https://discord.gg/GmHEZz9GGv)
+2. **Aller** sur [la page GitHub du bot](https://github.com/Help-Python-Group-FR/PyBot/blob/main/code/main.py)
+3. **Appuyer** sur `edit the file` et ajouter votre code ou modifier du code
+4. **Créer** un `pull request`, et y ajouter un titre, une description
+5. **Mettre** votre tag Discord (Dummy#0001)
+6. **Attendre** la réponse des développeurs compétant pour ajouter votre code !
+
+## La convention & les règles de code
+
+Pour avoir une chance d'avoir votre code sur la branche principale du bot, il faut respecter quelques règles, [la convention](https://github.com/Help-Python-Group-FR/PyBot/blob/main/code/conventions.md)
