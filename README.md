@@ -1,5 +1,5 @@
 # PyBot
-This is the PyBot of my Discord Server !
+This is the PyBot of <a href="https://discord.gg/GmHEZz9GGv">my Discord Server<a> !
 
 ## What's going to be on this Bot ?
 
@@ -16,4 +16,4 @@ There will be :
 
 ## Who's gonna make it ?
 
-All the members of my Discord Server that know how to use discord.py !
+All the members of <a href="https://discord.gg/GmHEZz9GGv">my Discord Server<a> that know how to use discord.py !
