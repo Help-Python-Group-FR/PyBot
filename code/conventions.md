@@ -4,7 +4,7 @@ Pour upload ton code tu vas avoir besoin de savoir des choses très importantes 
 
 ## Documenter vos fonctions !
 
-Il fait documenter vos fonction car comme le dit [Guido van Rossum](https://fr.wikipedia.org/wiki/Guido_van_Rossum), *"le code est plus souvent lu qu'écrit"*
+Il faut documenter vos fonctions car comme le dit [Guido van Rossum](https://fr.wikipedia.org/wiki/Guido_van_Rossum), *"le code est plus souvent lu qu'écrit"*
 
 ```python
 def sendMessage(message, member):
