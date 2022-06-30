@@ -20,4 +20,4 @@ All the members of <a href="https://discord.gg/GmHEZz9GGv">my Discord Server<a> 
 
 ## How to help to make this Bot ?
 
-All you have to do is be on <a href="https://discord.gg/GmHEZz9GGv">my Discord Server<a> and then go to this file and click **E** or edit the file when you have finished, pull a request by selecting "Create a new branch for this commit and start a pull request." write you have done, make a description, give your Discord pseudo and we will check your code to see if we merge it or not !
+All you have to do is be on <a href="https://discord.gg/GmHEZz9GGv">my Discord Server<a> and then go to <a href="https://github.com/Help-Python-Group-FR/PyBot/blob/main/code/main.py">this file<a> and click **E** or edit the file when you have finished, pull a request by selecting "Create a new branch for this commit and start a pull request." write you have done, make a description, give your Discord pseudo and we will check your code to see if we merge it or not !
