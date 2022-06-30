@@ -13,7 +13,7 @@ class MyEmbed:
 	def __init__(self, ctx, title, description, color=discord.Color.dark_blue()):
 		self.embed = discord.Embed(title=title, description=description, color=color)
 		self.embed.set_author(name=ctx.author.name, icon_url=ctx.author.avatar_url)
-		self.embed.set_footer(text="By Linajuci")
+		self.embed.set_footer(text="By this server :)")
 		self.embed.set_image(url='https://cdn.discordapp.com/attachments/717821702180044862/729449197480181810/color_seperater_thingy.gif')
 
 	def add_field(self, name, value, inline=False):
