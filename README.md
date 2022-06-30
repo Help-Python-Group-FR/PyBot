@@ -17,3 +17,7 @@ There will be :
 ## Who's gonna make it ?
 
 All the members of <a href="https://discord.gg/GmHEZz9GGv">my Discord Server<a> that know how to use <a href="https://discordpy.readthedocs.io/en/stable/">discord.py<a> !
+
+## How to help to make this Bot ?
+
+All you have to do is be on <a href="https://discord.gg/GmHEZz9GGv">my Discord Server<a> and then go to this file and click **E** or edit the file when you have finished, pull a request by selecting "Create a new branch for this commit and start a pull request." write you have done, make a description, give your Discord pseudo and we will check your code to see if we merge it or not !
