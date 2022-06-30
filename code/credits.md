@@ -8,4 +8,4 @@ Made with :heart: by [Artic](https://discord.com/users/855783629047988274) and [
 
 Par les membres du serveur Discord !
 
-MERCI À VOUS !!!
+**MERCI À VOUS !!!**
