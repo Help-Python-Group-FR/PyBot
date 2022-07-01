@@ -6,11 +6,13 @@ from discord_slash.utils.manage_components import create_choice, create_option
 
 from time import sleep
 
+from mod import help_commands as help_mod
+
 prefix = "/"
 bot = commands.Bot(command_prefix=prefix)
 bot.remove_command('help')
 slash = SlashCommand(bot, sync_commands=True)
-help_commands = {"mod":[], "fun":[], "use":[]}
+help_commands = {"mod":help_mod, "fun":[], "use":[]}
 
 def help_append(type, name, value):
 	"""
