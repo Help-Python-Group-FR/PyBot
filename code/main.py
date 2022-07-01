@@ -7,6 +7,7 @@ from discord_slash.utils.manage_components import create_choice, create_option
 from time import sleep
 
 from mod import help_commands as help_mod
+from mod import *
 
 prefix = "/"
 bot = commands.Bot(command_prefix=prefix)
