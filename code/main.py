@@ -7,9 +7,9 @@ from discord_slash.utils.manage_components import create_choice, create_option
 from time import sleep
 
 prefix = "/"
-client = commands.Bot(command_prefix=prefix)
-client.remove_command('help')
-slash = SlashCommand(client, sync_commands=True)
+bot = commands.Bot(command_prefix=prefix)
+bot.remove_command('help')
+slash = SlashCommand(bot, sync_commands=True)
 help_commands = {"mod":[], "fun":[], "use":[]}
 
 def help_append(type, name, value):
@@ -33,10 +33,17 @@ class MyEmbed:
 	"""
 	
 	def __init__(self, ctx, title, description, color=discord.Color.dark_blue()):
+		self.ctx = ctx
+		self.title = title
+		self.description = desciption
+		self.color = color
 		self.embed = discord.Embed(title=title, description=description, color=color)
 		self.embed.set_author(name=ctx.author.name, icon_url=ctx.author.avatar_url)
 		self.embed.set_footer(text="By this server :)")
 		self.embed.set_image(url='https://cdn.discordapp.com/attachments/717821702180044862/729449197480181810/color_seperater_thingy.gif')
+	
+	def __str__(self):
+		return f'<discord.Embed: [ctx: {ctx} | title: {self.title} | descrtiption: {self.description} | color: {self.color}]>'
 
 	def add_field(self, name, value, inline=False):
 		self.embed.add_field(name=name, value=value, inline=inline)
@@ -74,10 +81,9 @@ async def on_ready():
 	"""
 	This function say Ready ! In the terminal when it's loaded and make the Bot status to Online.
 	"""
-	await client.change_presence(status=discord.Status.online, activity=discord.Game(f'{prefix}help'))
+	await bot.change_presence(status=discord.Status.online, activity=discord.Game(f'{prefix}help'))
 	print("Ready !")
-
-print("Launch of the client...")
-
+	print("Launch of the client...")
+	
 token = ""
 client.run(token)
