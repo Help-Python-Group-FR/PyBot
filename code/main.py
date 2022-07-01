@@ -76,7 +76,7 @@ async def send_error(ctx, error):
 	await msg.delete()
 
 
-@client.event
+@bot.event
 async def on_ready():
 	"""
 	This function say Ready ! In the terminal when it's loaded and make the Bot status to Online.
@@ -86,4 +86,4 @@ async def on_ready():
 	print("Launch of the client...")
 	
 token = ""
-client.run(token)
+bot.run(token)
