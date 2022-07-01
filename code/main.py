@@ -35,7 +35,7 @@ class MyEmbed:
 	def __init__(self, ctx, title, description, color=discord.Color.dark_blue()):
 		self.ctx = ctx
 		self.title = title
-		self.description = desciption
+		self.description = description
 		self.color = color
 		self.embed = discord.Embed(title=title, description=description, color=color)
 		self.embed.set_author(name=ctx.author.name, icon_url=ctx.author.avatar_url)
@@ -43,7 +43,7 @@ class MyEmbed:
 		self.embed.set_image(url='https://cdn.discordapp.com/attachments/717821702180044862/729449197480181810/color_seperater_thingy.gif')
 	
 	def __str__(self):
-		return f'<discord.Embed: [ctx: {ctx} | title: {self.title} | descrtiption: {self.description} | color: {self.color}]>'
+		return f'<discord.Embed: [ctx: {self.ctx} | title: {self.title} | descrtiption: {self.description} | color: {self.color}]>'
 
 	def add_field(self, name, value, inline=False):
 		self.embed.add_field(name=name, value=value, inline=inline)
