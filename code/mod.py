@@ -5,7 +5,8 @@ from discord_slash.utils.manage_components import * # évite de faire ça
 from discord_slash.utils.manage_components import create_choice, create_option
 
 from main.py import bot, slash, prefix, send_error, MyEmbed
-from main.py import help_append as ha
+
+help_commands = []
 
 def help_append(name, value):
-  ha("mod", name, value)
+  help_commands.append([name, value])
