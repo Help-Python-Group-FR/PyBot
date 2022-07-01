@@ -26,7 +26,7 @@ def sendMessage(message, member):
 Une commande n'existe pas si elle n'est pas affichée au help, nous développeur, nous qui avons accès au code, nous qui voyons le code, les membres ne le voient pas.
 
 La fonction se nomme `help_append()` et doit remplir trois critères :
-- type : Le type de la commande (mod/fun/use)
+- type : Le type de la commande (mod/fun/use) (A renseigner seulement si vous travaillez dans le main.py !)
 - name : Le nom de votre commande
 - value : La desciption de votre commande
 
