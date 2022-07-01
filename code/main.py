@@ -9,11 +9,17 @@ from time import sleep
 from mod import help_commands as help_mod
 from mod import *
 
+from use import help_commands as help_use
+from use import *
+
+from fun import help_commands as help_fun
+from fun import *
+
 prefix = "/"
 bot = commands.Bot(command_prefix=prefix)
 bot.remove_command('help')
 slash = SlashCommand(bot, sync_commands=True)
-help_commands = {"mod":help_mod, "fun":[], "use":[]}
+help_commands = {"mod":help_mod, "fun":help_fun, "use":help_use}
 
 def help_append(type, name, value):
 	"""
