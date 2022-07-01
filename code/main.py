@@ -1,19 +1,13 @@
-import discord
-from discord.ext import commands
-from discord_slash import SlashCommand, SlashContext
-from discord_slash.utils.manage_components import * # évite de faire ça
-from discord_slash.utils.manage_components import create_choice, create_option
-
 from time import sleep
 
 from mod import help_commands as help_mod
-from mod import *
-
 from use import help_commands as help_use
-from use import *
-
 from fun import help_commands as help_fun
-from fun import *
+
+import discord
+from discord.ext import commands
+from discord_slash import SlashCommand, SlashContext
+from discord_slash.utils.manage_components import create_choice, create_option
 
 prefix = "/"
 bot = commands.Bot(command_prefix=prefix)
