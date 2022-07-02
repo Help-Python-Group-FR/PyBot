@@ -1,4 +1,4 @@
-from time import sleep
+from asyncio import sleep
 
 from mod import help_commands as help_mod
 from use import help_commands as help_use
@@ -9,13 +9,13 @@ from discord.ext import commands
 from discord_slash import SlashCommand, SlashContext
 from discord_slash.utils.manage_components import create_choice, create_option
 
-prefix = "/"
-bot = commands.Bot(command_prefix=prefix)
+prefix = "."
+bot = commands.Bot(command_prefix=commands.when_mentioned_or(prefixes=prefix))
 bot.remove_command('help')
 slash = SlashCommand(bot, sync_commands=True)
 help_commands = {"mod":help_mod, "fun":help_fun, "use":help_use}
 
-def help_append(type, name, value):
+def help_append(type: str, name: str, value: str):
 	"""
 	This function will add a command to the Help Message.
 	
@@ -35,7 +35,7 @@ class MyEmbed:
 		- It put a rainbow bar at the end and say the credits
 	"""
 	
-	def __init__(self, ctx, title, description, color=discord.Color.dark_blue()):
+	def __init__(self, ctx: commands.Context, title: str, description: str, color=discord.Color.dark_blue()):
 		self.ctx = ctx
 		self.title = title
 		self.description = description
@@ -61,7 +61,7 @@ class MyEmbed:
 		self.embed.set_image(url=url)
 
 		
-async def send_error(ctx, error):
+async def send_error(ctx: commands.Context, error: commands.errors):
 	"""
 	This function is used for send formated error messages !
 	
@@ -78,7 +78,6 @@ async def send_error(ctx, error):
 	sleep(3)
 	await msg.delete()
 
-
 @bot.event
 async def on_ready():
 	"""
@@ -88,5 +87,60 @@ async def on_ready():
 	print("Ready !")
 	print("Launch of the client...")
 	
-token = ""
+help_append('use', 'help', 'The help command.')
+@bot.group() # by Artic
+async def help(ctx: commands.Context):
+	"""
+	The help command. (all)
+	"""
+	embed = discord.Embed(title=f'Help [all] ({len(help_mod) + len(help_use) + len(help_fun)})', description=f'`{bot.command_prefix}help <class>`', color=discord.Color.blue())
+	embed.add_field(name=':shield: Moderation', value=f'`{bot.command_prefix}help moderation`')
+	embed.add_field(name=':books: Utility', value=f'`{bot.command_prefix}help utility`')
+	embed.add_field(name=':joy: Fun', value=f'`{bot.command_prefix}help fun`')
+	embed.set_author(name=ctx.author.name, icon_url=ctx.author.avatar_url)
+	embed.set_footer(text="By this server :)")
+	embed.set_image(url='https://cdn.discordapp.com/attachments/717821702180044862/729449197480181810/color_seperater_thingy.gif')
+	return await ctx.reply(embed=embed)
+
+@help.command() # by Artic
+async def moderation(ctx: commands.Context):
+	"""
+	The help command. (moderation)
+	"""
+	embed = discord.Embed(title=f'Help [moderation] ({len(help_mod)})', description=f'`{bot.command_prefix}help moderation`', color=discord.Color.blue())
+	for _command in help_mod:
+		embed.add_field(name=f'{bot.command_prefix}{_command[0]}', value=_command[1])
+	embed.set_author(name=ctx.author.name, icon_url=ctx.author.avatar_url)
+	embed.set_footer(text="By this server :)")
+	embed.set_image(url='https://cdn.discordapp.com/attachments/717821702180044862/729449197480181810/color_seperater_thingy.gif')
+	return await ctx.reply(embed=embed)
+
+@help.command() # by Artic
+async def utility(ctx: commands.Context):
+	"""
+	The help command. (utility)
+	"""
+	embed = discord.Embed(title=f'Help [utility] ({len(help_use)})', description=f'`{bot.command_prefix}help utility`', color=discord.Color.blue())
+	for _command in help_use:
+		embed.add_field(name=f'{bot.command_prefix}{_command[0]}', value=_command[1])
+	embed.set_author(name=ctx.author.name, icon_url=ctx.author.avatar_url)
+	embed.set_footer(text="By this server :)")
+	embed.set_image(url='https://cdn.discordapp.com/attachments/717821702180044862/729449197480181810/color_seperater_thingy.gif')
+	return await ctx.reply(embed=embed)
+
+@help.command() # by Artic
+async def fun(ctx: commands.Context):
+	"""
+	The help command. (fun)
+	"""
+	embed = discord.Embed(title=f'Help [fun] ({len(help_fun)})', description=f'`{bot.command_prefix}help fun`', color=discord.Color.blue())
+	for _command in help_fun:
+		embed.add_field(name=f'{bot.command_prefix}{_command[0]}', value=_command[1])
+	embed.set_author(name=ctx.author.name, icon_url=ctx.author.avatar_url)
+	embed.set_footer(text="By this server :)")
+	embed.set_image(url='https://cdn.discordapp.com/attachments/717821702180044862/729449197480181810/color_seperater_thingy.gif')
+	await ctx.reply(embed=embed)
+	return await ctx.message.delete()
+
+token = "put the token here"
 bot.run(token)
