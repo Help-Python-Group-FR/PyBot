@@ -8,7 +8,6 @@ Il va y avoir :
 - une commande de kick;
 - une commande de clear;
 - une commande de purge;
-- une commande de help;
 - une commande de problème;
 - des commandes dite mini-jeux;
 - des niveaux;
