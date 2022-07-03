@@ -10,7 +10,7 @@ from discord_slash import SlashCommand, SlashContext
 from discord_slash.utils.manage_components import create_choice, create_option
 
 prefix = "."
-bot = commands.Bot(command_prefix=commands.when_mentioned_or(prefixes=prefix))
+bot = commands.Bot(command_prefix=commands.when_mentioned_or(prefix))
 bot.remove_command('help')
 slash = SlashCommand(bot, sync_commands=True)
 help_commands = {"mod":help_mod, "fun":help_fun, "use":help_use}
@@ -86,17 +86,55 @@ async def on_ready():
 	await bot.change_presence(status=discord.Status.online, activity=discord.Game(f'{prefix}help'))
 	print("Ready !")
 	print("Launch of the client...")
-	
+
+@bot.event # by Artic
+async def on_command_error(ctx: commands.Context, error: commands.CommandError):
+	if isinstance(error, commands.MissingRequiredArgument):
+		embed = discord.Embed(title="ERREUR !", color=discord.Color.from_rgb(255, 0, 0))
+		embed.add_field(name="Cause de l'erreur :", value=f"Le paramètre `{error.param.name}` est manquant.", inline=False)
+		return await ctx.send(embed=embed)
+	elif isinstance(error, commands.MissingPermissions):
+		embed = discord.Embed(title="ERREUR !", color=discord.Color.from_rgb(255, 0, 0))
+		embed.add_field(name="Cause de l'erreur :", value="Vous n'avez pas les permissions requises !", inline=False)
+		return await ctx.send(embed=embed)
+	elif isinstance(error, commands.CommandNotFound):
+		embed = discord.Embed(title="ERREUR !", color=discord.Color.from_rgb(255, 0, 0))
+		embed.add_field(name="Cause de l'erreur :", value="Commande non reconnue ou inexistante.", inline=False)
+		return await ctx.send(embed=embed)
+	elif isinstance(error, commands.CommandOnCooldown):
+		return await ctx.message.add_reaction("⏳")
+	elif isinstance(error, commands.BotMissingPermissions):
+		embed = discord.Embed(title="ERREUR !", color=discord.Color.from_rgb(255, 0, 0))
+		embed.add_field(name="Cause de l'erreur :", value=f"Le bot a besoin des permissions suivantes pour effectuer cette commande : [`{str(error.missing_perms)}`](https://discord.com/developers/docs/topics/permissions).", inline=False)
+		return await ctx.send(embed=embed)
+	elif isinstance(error, commands.BadArgument):
+		embed = discord.Embed(title="ERREUR !", color=discord.Color.from_rgb(255, 0, 0))
+		embed.add_field(name="Cause de l'erreur :", value="Les conditions sont mauvaise !", inline=False)
+		return await ctx.send(embed=embed)
+	elif isinstance(error, commands.CommandInvokeError):
+		embed = discord.Embed(title="ERREUR !", color=discord.Color.from_rgb(255, 0, 0))
+		embed.add_field(name="Cause de l'erreur :", value="Une erreur est survenue lors de l'exécution de la commande.", inline=False)
+		embed.add_field(name="Conseil", value="Les commandes marchent seulment dans les canaux textuels.", inline=False)
+		return await ctx.send(embed=embed)
+	elif isinstance(error, commands.CheckFailure):
+		embed = discord.Embed(title="ERREUR !", color=discord.Color.from_rgb(255, 0, 0))
+		embed.add_field(name="Cause de l'erreur :", value="Vous n'avez pas les permissions requises !", inline=False)
+		return await ctx.send(embed=embed)
+	else:
+		embed = discord.Embed(title="ERREUR !", color=discord.Color.from_rgb(255, 0, 0))
+		embed.add_field(name="Cause de l'erreur :", value=f"Erreur non reconnue !\n\n`{error}`", inline=False)
+		return await ctx.send(embed=embed)
+
 help_append('use', 'help', 'The help command.')
 @bot.group() # by Artic
 async def help(ctx: commands.Context):
 	"""
 	The help command. (all)
 	"""
-	embed = discord.Embed(title=f'Help [all] ({len(help_mod) + len(help_use) + len(help_fun)})', description=f'`{bot.command_prefix}help <class>`', color=discord.Color.blue())
-	embed.add_field(name=':shield: Moderation', value=f'`{bot.command_prefix}help moderation`')
-	embed.add_field(name=':books: Utility', value=f'`{bot.command_prefix}help utility`')
-	embed.add_field(name=':joy: Fun', value=f'`{bot.command_prefix}help fun`')
+	embed = discord.Embed(title=f'Help [all] ({len(help_mod) + len(help_use) + len(help_fun)})', description=f'`{(await bot.get_prefix(ctx.message))[2]}help <class>`', color=discord.Color.blue())
+	embed.add_field(name=':shield: Moderation', value=f'`{(await bot.get_prefix(ctx.message))[2]}help moderation`')
+	embed.add_field(name=':books: Utility', value=f'`{(await bot.get_prefix(ctx.message))[2]}help utility`')
+	embed.add_field(name=':joy: Fun', value=f'`{(await bot.get_prefix(ctx.message))[2]}help fun`')
 	embed.set_author(name=ctx.author.name, icon_url=ctx.author.avatar_url)
 	embed.set_footer(text="By this server :)")
 	embed.set_image(url='https://cdn.discordapp.com/attachments/717821702180044862/729449197480181810/color_seperater_thingy.gif')
@@ -107,9 +145,9 @@ async def moderation(ctx: commands.Context):
 	"""
 	The help command. (moderation)
 	"""
-	embed = discord.Embed(title=f'Help [moderation] ({len(help_mod)})', description=f'`{bot.command_prefix}help moderation`', color=discord.Color.blue())
+	embed = discord.Embed(title=f'Help [moderation] ({len(help_mod)})', description=f'`{(await bot.get_prefix(ctx.message))[2]}help moderation`', color=discord.Color.blue())
 	for _command in help_mod:
-		embed.add_field(name=f'{bot.command_prefix}{_command[0]}', value=_command[1])
+		embed.add_field(name=f'{(await bot.get_prefix(ctx.message))[2]}{_command[0]}', value=_command[1])
 	embed.set_author(name=ctx.author.name, icon_url=ctx.author.avatar_url)
 	embed.set_footer(text="By this server :)")
 	embed.set_image(url='https://cdn.discordapp.com/attachments/717821702180044862/729449197480181810/color_seperater_thingy.gif')
@@ -120,9 +158,9 @@ async def utility(ctx: commands.Context):
 	"""
 	The help command. (utility)
 	"""
-	embed = discord.Embed(title=f'Help [utility] ({len(help_use)})', description=f'`{bot.command_prefix}help utility`', color=discord.Color.blue())
+	embed = discord.Embed(title=f'Help [utility] ({len(help_use)})', description=f'`{(await bot.get_prefix(ctx.message))[2]}help utility`', color=discord.Color.blue())
 	for _command in help_use:
-		embed.add_field(name=f'{bot.command_prefix}{_command[0]}', value=_command[1])
+		embed.add_field(name=f'{(await bot.get_prefix(ctx.message))[2]}{_command[0]}', value=_command[1])
 	embed.set_author(name=ctx.author.name, icon_url=ctx.author.avatar_url)
 	embed.set_footer(text="By this server :)")
 	embed.set_image(url='https://cdn.discordapp.com/attachments/717821702180044862/729449197480181810/color_seperater_thingy.gif')
@@ -133,9 +171,9 @@ async def fun(ctx: commands.Context):
 	"""
 	The help command. (fun)
 	"""
-	embed = discord.Embed(title=f'Help [fun] ({len(help_fun)})', description=f'`{bot.command_prefix}help fun`', color=discord.Color.blue())
+	embed = discord.Embed(title=f'Help [fun] ({len(help_fun)})', description=f'`{(await bot.get_prefix(ctx.message))[2]}help fun`', color=discord.Color.blue())
 	for _command in help_fun:
-		embed.add_field(name=f'{bot.command_prefix}{_command[0]}', value=_command[1])
+		embed.add_field(name=f'{(await bot.get_prefix(ctx.message))[2]}{_command[0]}', value=_command[1])
 	embed.set_author(name=ctx.author.name, icon_url=ctx.author.avatar_url)
 	embed.set_footer(text="By this server :)")
 	embed.set_image(url='https://cdn.discordapp.com/attachments/717821702180044862/729449197480181810/color_seperater_thingy.gif')
