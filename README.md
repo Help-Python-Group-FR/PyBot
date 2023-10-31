@@ -26,7 +26,7 @@ Tout les membres du [serveur Discord](https://discord.gg/GmHEZz9GGv) ont le droi
 2. **Aller** sur [la page GitHub du bot](https://github.com/Help-Python-Group-FR/PyBot/blob/main/code/main.py)
 3. **Appuyer** sur `edit the file` et ajouter votre code ou modifier du code
 4. **Créer** un `pull request`, et y ajouter un titre, une description
-5. **Mettre** votre tag Discord (Dummy#0001)
+5. **Mettre** votre nom d'utilisateur (Et non pas d'affichage) Discord (Ex. linajuci7525)
 6. **Attendre** la réponse des développeurs compétant pour ajouter votre code !
 
 ## La convention & les règles de code
