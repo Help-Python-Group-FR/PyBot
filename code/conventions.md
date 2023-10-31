@@ -21,25 +21,6 @@ def sendMessage(message, member):
 #Your code...
 ```
 
-## Implémenter au help
-
-Une commande n'existe pas si elle n'est pas affichée au help, nous développeur, nous qui avons accès au code, nous qui voyons le code, les membres ne le voient pas.
-
-La fonction se nomme `help_append()` et doit remplir trois critères :
-- type : Le type de la commande (mod/fun/use) (A renseigner seulement si vous travaillez dans le main.py !)
-- name : Le nom de votre commande
-- value : La desciption de votre commande
-
-La fonction doit être **avant** la commande !
-
-```python
-help_append("mod", "ban", "Cette fonction va bannir un membre !\nSyntaxe : `/ban <member> (reason)`\nPremission requise : `Ban Members`")
-@slash.slash(...)
-async def ban(...):
-  ...
-  
-```
-
 ## Explicite qu'implicite
 
 Ai-je vraiment besoin de le dire ? Votre code doit contenir des commentaires et ne doit pas être difficile à comprendre, les commentaires sont très utiles car nous devons comprendre ce qui se passe dans votre fonction ! Regardez :
