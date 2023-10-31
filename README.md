@@ -4,6 +4,8 @@ Le bot open source Python de [notre serveur Discord](https://discord.gg/GmHEZz9G
 ## Que va-t-il y avoir sur ce Bot ?
 
 Il va y avoir :
+- des messages d'acceuils/départs;
+- un moyen de créer des tickets pour résoudre les problèmes des utilisateurs;
 - une commande de ban;
 - une commande de kick;
 - une commande de clear;
