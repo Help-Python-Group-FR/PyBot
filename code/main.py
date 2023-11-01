@@ -14,13 +14,15 @@ tree = app_commands.CommandTree(client)
 # Ici j'ajoute les commandes définient dans les autres fichiers :
 for command in fun.fun_commands:
     tree.command(name=command['name'], description=command['description'])(command['func'])
-    print(f"Loaded {command['name']} with the function {command['func']}")
+    print(f"Command {command['name']} has been set up with the func {command['func']} !")
 
 for command in mod.mod_commands:
     tree.command(name=command['name'], description=command['description'])(command['func'])
+    print(f"Command {command['name']} has been set up with the func {command['func']} !")
 
 for command in utils.utils_commands:
     tree.command(name=command['name'], description=command['description'])(command['func'])
+    print(f"Command {command['name']} has been set up with the func {command['func']} !")
 
 
 @client.event
@@ -48,6 +50,6 @@ async def on_command_error(interaction, error):
 
     raise error
 
-TOKEN = ""
+TOKEN = "OTIxMTQ1MzU1NTYxNzQyMzk2.GHPvKg.Oc1GGhhRCaIrgduhV1oct6uTYZ3WpALrjf-pHM "
 print("Launch of the Client...")
 client.run(TOKEN)
