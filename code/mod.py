@@ -10,6 +10,6 @@ mod_commands = []
 #   - 'description' : La description de ta commande (Ex. Never Gonna Give You Up !)
 #   - 'func' : la fonction qui contient ta commande (Ex. say_goodbye_command) PS. Ne pas mettre les parenthèses
 #
-# Ex. fun_commands = [{'name':'deuxième-test', 'description':'Hello World !', 'func':first_test},
+# Ex. mod_commands = [{'name':'deuxième-test', 'description':'Hello World !', 'func':first_test},
 #                     {'name':'salut', 'description':'Te dis salut !', 'func':hi_command}]
 
