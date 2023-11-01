@@ -2,7 +2,7 @@ import discord
 from discord import app_commands
 
 # Cette ligne doit se trouver à la fin du fichier !
-mod_commands = []
+utils_commands = []
 # Elle sert à ajouter à "l'arbre" des commandes du Bot la commande crée :
 #
 # Pour cela il faut y mettre un nouveau dictionnaire et y mettre les clés suivantes avec ce qui leur correspond en paramètre :
