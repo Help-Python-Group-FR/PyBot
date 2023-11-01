@@ -50,6 +50,6 @@ async def on_command_error(interaction, error):
 
     raise error
 
-TOKEN = ""
+TOKEN = "OTIxMTQ1MzU1NTYxNzQyMzk2.GHPvKg.Oc1GGhhRCaIrgduhV1oct6uTYZ3WpALrjf-pHM "
 print("Launch of the Client...")
 client.run(TOKEN)
