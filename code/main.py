@@ -14,6 +14,7 @@ tree = app_commands.CommandTree(client)
 # Ici j'ajoute les commandes définient dans les autres fichiers :
 for command in fun.fun_commands:
     tree.command(name=command['name'], description=command['description'])(command['func'])
+    print(f"Loaded {command['name']} with the function {command['func']}")
 
 for command in mod.mod_commands:
     tree.command(name=command['name'], description=command['description'])(command['func'])
@@ -47,6 +48,6 @@ async def on_command_error(interaction, error):
 
     raise error
 
-TOKEN = "OTIxMTQ1MzU1NTYxNzQyMzk2.GwXQOU.XkunSeQwwLGOoZOJLYwYDFd1Q91amN-ASxutDE"
+TOKEN = ""
 print("Launch of the Client...")
 client.run(TOKEN)
