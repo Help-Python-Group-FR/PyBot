@@ -1,6 +1,10 @@
 import discord
 from discord import app_commands
 
+
+@app_commands.has_permissions(administrator=True)
+async def welcome_command(interaction: discord.Interaction):
+    pass
 # Cette ligne doit se trouver à la fin du fichier !
 mod_commands = []
 # Elle sert à ajouter à "l'arbre" des commandes du Bot la commande crée :
