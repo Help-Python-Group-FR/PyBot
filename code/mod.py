@@ -22,7 +22,7 @@ async def welcome_command(interaction: discord.Interaction, channel: discord.Tex
         welcome_channels = {}
 
     if channel is not None:
-        welcome_channels[interaction.guild_id] = channel
+        welcome_channels[interaction.guild_id] = channel.id
 
     else:
         welcome_channels[interaction.guild_id] = None

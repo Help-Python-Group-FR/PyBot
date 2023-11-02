@@ -61,7 +61,7 @@ async def on_member_join(member: discord.Member):
                                               color=discord.Color.red())
 
                 welcome_embed.set_thumbnail(url='https://cdn3.emoji.gg/emojis/6286_tada_animated.gif')
-                await welcome_channels[member.guild.id].send(embed=welcome_embed)
+                await client.get_channel(welcome_channels[member.guild.id]).send(embed=welcome_embed)
 
         except KeyError:
             pass
@@ -83,6 +83,6 @@ async def on_command_error(interaction, error):
 
     raise error
 
-TOKEN = "OTIxMTQ1MzU1NTYxNzQyMzk2.GTmSsr._s3JJKX359OIMVFGPTOy_-rrmy_BdFx_NKyjeA"
+TOKEN = "OTIxMTQ1MzU1NTYxNzQyMzk2.GeH2fj.ZaPg4XeJgo28uhM998fGWmtw1Rsb0D-t5nkiAM"
 print("Launch of the Client...")
 client.run(TOKEN)
