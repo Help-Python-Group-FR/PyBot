@@ -33,3 +33,7 @@ fun_commands = [{'name':'dice', 'description':'Cette commande tire un certain no
 #
 # Ex. fun_commands = [{'name':'deuxième-test', 'description':'Hello World !', 'func':first_test},
 #                     {'name':'salut', 'description':'Te dis salut !', 'func':hi_command}]
+
+if __name__ == '__main__':
+    import os
+    os.system("python main.py")

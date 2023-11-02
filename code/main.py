@@ -1,5 +1,6 @@
 import discord
 from discord import app_commands
+import pickle
 
 # Ici j'importe les fichiers où l'on a défini les commandes
 import fun
@@ -8,6 +9,7 @@ import utils
 
 # Je définis les variables essentiels du Bot ici :
 intents = discord.Intents.default()
+intents.members = True
 client = discord.Client(intents=intents)
 tree = app_commands.CommandTree(client)
 
@@ -37,6 +39,37 @@ async def on_ready():
     print(f"We have logged in as {client.user}")
 
 
+@client.event
+async def on_member_join(member: discord.Member):
+    """
+    Cette commande s'éxecute lorsqu'un membre rejoin le serveur :
+        - Paramètre 'member' : Les informations du membre en question;
+    """
+
+    # Ici je récupère les données du fichier data/welcome_channel pour savoir où envoyer le message de bienvenue
+    try:
+        with open("data/welcome_channel", "rb") as file:
+            welcome_channels = pickle.Unpickler(file).load()
+
+        try:
+            if welcome_channels[member.guild.id] is not None:
+                welcome_embed = discord.Embed(title="**:tada: | Bienvenue !**",
+                                              description=f"Bienvenue à {member.mention} sur"
+                                                          f" **{member.guild.name}** ! Tu es le"
+                                                          f" {member.guild.member_count} "
+                                                          f"membre(s) !",
+                                              color=discord.Color.red())
+
+                welcome_embed.set_thumbnail(url='https://cdn3.emoji.gg/emojis/6286_tada_animated.gif')
+                await client.get_channel(welcome_channels[member.guild.id]).send(embed=welcome_embed)
+
+        except KeyError:
+            pass
+
+    except EOFError:
+        pass
+
+
 @tree.error
 async def on_command_error(interaction, error):
     """
@@ -50,6 +83,6 @@ async def on_command_error(interaction, error):
 
     raise error
 
-TOKEN = "OTIxMTQ1MzU1NTYxNzQyMzk2.GHPvKg.Oc1GGhhRCaIrgduhV1oct6uTYZ3WpALrjf-pHM "
+TOKEN = "OTIxMTQ1MzU1NTYxNzQyMzk2.GeH2fj.ZaPg4XeJgo28uhM998fGWmtw1Rsb0D-t5nkiAM"
 print("Launch of the Client...")
 client.run(TOKEN)
