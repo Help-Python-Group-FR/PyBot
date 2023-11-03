@@ -5,7 +5,8 @@ from tools import maths
 
 
 @app_commands.describe(roll_number="Le nombre de dés à lancer (Max. 100)",
-                       roll_max="La valeur maximale des faces du dé (Max. 50)")
+                       roll_max="Le nombre des faces des dés (Max. 50)")
+@app_commands.rename(roll_number="dés-lancés", roll_max="faces")
 async def dice_command(interaction: discord.Interaction, roll_number: int = 1, roll_max: int = 6):
     """
     Cette commande tire un certain nombre de dés et en resort des statistiques
