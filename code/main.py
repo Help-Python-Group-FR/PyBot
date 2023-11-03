@@ -56,7 +56,7 @@ async def on_member_join(member: discord.Member):
                 welcome_embed = discord.Embed(title="**:tada: | Bienvenue !**",
                                               description=f"Bienvenue à {member.mention} sur"
                                                           f" **{member.guild.name}** ! Tu es le"
-                                                          f" {member.guild.member_count} "
+                                                          f" **{member.guild.member_count}**eme "
                                                           f"membre(s) !",
                                               color=discord.Color.red())
 
@@ -83,6 +83,6 @@ async def on_command_error(interaction, error):
 
     raise error
 
-TOKEN = "OTIxMTQ1MzU1NTYxNzQyMzk2.GeH2fj.ZaPg4XeJgo28uhM998fGWmtw1Rsb0D-t5nkiAM"
+TOKEN = "OTIxMTQ1MzU1NTYxNzQyMzk2.Gf1oOl.fF4KQ1fTDGpZ20k4zDdMhLZoDBfXSAVB6u10W0"
 print("Launch of the Client...")
 client.run(TOKEN)

@@ -23,16 +23,19 @@ def dice(roll_number: int, roll_max: int):
     for _ in range(roll_number):
         rolls.append(random.randint(1, roll_max))  # Simule tout les lancés de dés.
 
-    result = discord.Embed(title=":tada: | Alea jacta est !",
+    result = discord.Embed(title="**:tada: | Alea jacta est !**",
                            description=f"{roll_number} dés ont été lancés avec des faces entre 1 et {roll_max}.",
                            color=discord.Color.pink())
     result.set_thumbnail(url='https://media.tenor.com/xrrd8RNhd0MAAAAj/dice-sticker.gif')
 
-    result.add_field(name=":game_die: Les résultats sont respectivement :", value=f"{'; '.join(str(item) for item in rolls)}")
-    result.add_field(name=":bar_chart: Statistiques :", value=f"Moyenne : {sum(rolls) / len(rolls)}\nTotal : {sum(rolls)}\n"
-                                                              f"Plus grand chiffre obtenu : {sorted(rolls)[len(rolls) - 1]}\n"
-                                                              f"Plus petit chiffre obtenu : {sorted(rolls)[0]}")
-    result.set_image(url="https://cdn.discordapp.com/attachments/717821702180044862/729449197480181810/color_seperater_thingy.gif")
+    result.add_field(name="**:game_die: Les résultats sont respectivement :**",
+                     value=f"{'; '.join(str(item) for item in rolls)}")
+    result.add_field(name="**:bar_chart: Statistiques :**",
+                     value=f"Moyenne : {sum(rolls) / len(rolls)}\nTotal : {sum(rolls)}\n"
+                           f"Plus grand chiffre obtenu : {sorted(rolls)[len(rolls) - 1]}\n"
+                           f"Plus petit chiffre obtenu : {sorted(rolls)[0]}")
+    result.set_image(
+        url="https://cdn.discordapp.com/attachments/717821702180044862/729449197480181810/color_seperater_thingy.gif")
     result.set_footer(text="Command by Futuray")
 
     return result
