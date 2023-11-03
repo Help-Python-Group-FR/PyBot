@@ -69,6 +69,17 @@ async def on_member_join(member: discord.Member):
     except EOFError:
         pass
 
+    try:
+        with open("data/auto_roles", "rb") as file:
+            auto_roles = pickle.Unpickler(file).load()
+
+        for role_id in auto_roles[member.guild.id]:
+            role = member.guild.get_role(role_id)
+            await member.add_roles(role)
+
+    except EOFError:
+        pass
+
 
 @tree.error
 async def on_command_error(interaction, error):
@@ -83,6 +94,6 @@ async def on_command_error(interaction, error):
 
     raise error
 
-TOKEN = "OTIxMTQ1MzU1NTYxNzQyMzk2.Gf1oOl.fF4KQ1fTDGpZ20k4zDdMhLZoDBfXSAVB6u10W0"
+TOKEN = ""
 print("Launch of the Client...")
 client.run(TOKEN)
