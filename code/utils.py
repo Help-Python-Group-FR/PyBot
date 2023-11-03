@@ -30,6 +30,7 @@ async def announcement_command(interaction: discord.Interaction, channel: discor
         - Paramètre 'thumbnail' (facultatif) : Icône affichée en haut à droite du message de type Embed;
         - Paramètre 'image' (facultatif) : Image ajoutée à l'annonce;
         - Paramètre 'title' : Titre de l'annonce;
+        - Paramètre 'ping' : (facultatif) Rôle à notifier;
     """
     if color.value == 1:
         color = discord.Color.blue()
