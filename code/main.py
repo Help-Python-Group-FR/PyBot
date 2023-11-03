@@ -56,8 +56,8 @@ async def on_member_join(member: discord.Member):
                 welcome_embed = discord.Embed(title="**:tada: | Bienvenue !**",
                                               description=f"Bienvenue à {member.mention} sur"
                                                           f" **{member.guild.name}** ! Tu es le"
-                                                          f" **{member.guild.member_count}**eme "
-                                                          f"membre(s) !",
+                                                          f" **{member.guild.member_count}eme** "
+                                                          f"membre !",
                                               color=discord.Color.red())
 
                 welcome_embed.set_thumbnail(url='https://cdn3.emoji.gg/emojis/6286_tada_animated.gif')
