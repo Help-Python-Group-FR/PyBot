@@ -3,23 +3,19 @@ from discord import app_commands
 
 
 @app_commands.checks.has_permissions(administrator=True)
-@app_commands.rename(channel="salon")
-@app_commands.describe(channel="Le salon dans lequel tu veux faire ton annonce.")
-@app_commands.rename(title="titre")
-@app_commands.describe(title="Le titre que tu veux donner à ton annonce.")
-@app_commands.rename(announcement="annonce")
-@app_commands.describe(announcement="Ton annonce.")
-@app_commands.rename(thumbnail="icone")
-@app_commands.describe(thumbnail="L'icône que tu veux donner à ton annonce.")
-@app_commands.describe(image="L'image que tu veux donner à ton annonce.")
+@app_commands.rename(channel="salon", title="titre", announcement="annonce", thumbnail="icone", color="couleur")
+@app_commands.describe(channel="Le salon dans lequel tu veux faire ton annonce.",
+                       title="Le titre que tu veux donner à ton annonce.",
+                       announcement="Ton annonce.",
+                       thumbnail="L'icône que tu veux donner à ton annonce.",
+                       image="L'image que tu veux donner à ton annonce.",
+                       color="La couleur que tu veux donner à ton annonce.",
+                       ping="Rôle que tu veux mentionner pour ton annonce.")
 @app_commands.choices(color=[
     app_commands.Choice(name="bleu", value=1),
     app_commands.Choice(name="vert", value=2),
     app_commands.Choice(name="rouge", value=3)
 ])
-@app_commands.rename(color="couleur")
-@app_commands.describe(color="La couleur que tu veux donner à ton annonce.")
-@app_commands.describe(ping="Rôle que tu veux mentionner pour ton annonce.")
 async def announcement_command(interaction: discord.Interaction, channel: discord.TextChannel, title: str,
                                announcement: str,  color: app_commands.Choice[int], thumbnail: discord.Attachment = None,
                                image: discord.Attachment = None, ping: discord.Role = None):
