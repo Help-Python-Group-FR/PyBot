@@ -20,8 +20,8 @@ from discord import app_commands
 @app_commands.rename(color="couleur")
 @app_commands.describe(color="La couleur que tu veux donner à ton message.")
 async def announcement_command(interaction: discord.Interaction, channel: discord.TextChannel, title: str,
-                               announcement: str, thumbnail: discord.Attachment = None,
-                               image: discord.Attachment = None, color: app_commands.Choice[int] = 1):
+                               announcement: str,  color: app_commands.Choice[int], thumbnail: discord.Attachment = None,
+                               image: discord.Attachment = None):
     """
     Cette commande permet à un administrateur de faire une annonce dans un salon spécifié :
         - Paramètre 'channel' : Le salon où l'on veut poster l'annonce;
