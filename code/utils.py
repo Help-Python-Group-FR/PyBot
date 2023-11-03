@@ -55,6 +55,7 @@ async def announcement_command(interaction: discord.Interaction, channel: discor
         await msg.delete()
 
     validation_embed = discord.Embed(title=":white_check_mark: | Ton annonce à bien été envoyée !",
+                                     description=f"L'annonce à été envoyée dans le salon {channel.mention} !",
                                      color=discord.Color.green())
     validation_embed.set_thumbnail(url="https://cdn3.emoji.gg/emojis/2121-announcement-badge.png")
     await interaction.response.send_message(embed=validation_embed, ephemeral=True)
