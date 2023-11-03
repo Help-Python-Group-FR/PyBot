@@ -18,10 +18,11 @@ from discord import app_commands
     app_commands.Choice(name="rouge", value=3)
 ])
 @app_commands.rename(color="couleur")
-@app_commands.describe(color="La couleur que tu veux donner à ton message.")
+@app_commands.describe(color="La couleur que tu veux donner à ton annonce.")
+@app_commands.describe(ping="Rôle que tu veux mentionner pour ton annonce.")
 async def announcement_command(interaction: discord.Interaction, channel: discord.TextChannel, title: str,
                                announcement: str,  color: app_commands.Choice[int], thumbnail: discord.Attachment = None,
-                               image: discord.Attachment = None):
+                               image: discord.Attachment = None, ping: discord.Role = None):
     """
     Cette commande permet à un administrateur de faire une annonce dans un salon spécifié :
         - Paramètre 'channel' : Le salon où l'on veut poster l'annonce;
@@ -37,7 +38,7 @@ async def announcement_command(interaction: discord.Interaction, channel: discor
     elif color.value == 3:
         color = discord.Color.red()
 
-    embed = discord.Embed(title=title, description=announcement, color=color)
+    embed = discord.Embed(title=f"**{title}**", description=announcement, color=color)
     if thumbnail is not None:
         embed.set_thumbnail(url=thumbnail.url)
 
@@ -46,6 +47,15 @@ async def announcement_command(interaction: discord.Interaction, channel: discor
 
     embed.set_footer(icon_url=interaction.user.avatar.url, text=f"Annonce faite par {interaction.user.name} !")
     await channel.send(embed=embed)
+
+    if ping is not None:
+        if ping == interaction.guild.default_role:
+            msg = await channel.send(interaction.guild.default_role)
+
+        else:
+            msg = await channel.send(ping.mention)
+
+        await msg.delete()
 
     validation_embed = discord.Embed(title=":white_check_mark: | Ton annonce à bien été envoyée !",
                                      color=discord.Color.green())
