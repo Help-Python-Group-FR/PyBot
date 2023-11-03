@@ -1,3 +1,5 @@
+import pickle
+
 import discord
 from discord import app_commands
 
@@ -61,10 +63,37 @@ async def announcement_command(interaction: discord.Interaction, channel: discor
     await interaction.response.send_message(embed=validation_embed, ephemeral=True)
 
 
+async def list_auto_roles_command(interaction: discord.Interaction):
+    """
+    Cette commande permet d'afficher les rôles présents d'auto-role d'un serveur.
+    """
+    try:
+        with open("data/auto_roles", "rb") as file:
+            auto_roles = pickle.Unpickler(file).load()
+
+        try:
+            str_auto_roles = ""
+            for roleID in auto_roles[interaction.guild_id]:
+                role = interaction.guild.get_role(roleID)
+                str_auto_roles += f"- {role.mention}\n"
+
+            embed = discord.Embed(title="**:page_with_curl: | Voici la liste des roles de l'auto-role :**",
+                                  description=str_auto_roles, color=discord.Color.green())
+            embed.set_thumbnail(url="https://cdn3.emoji.gg/emojis/4854-staff-blue.png")
+
+        except KeyError:
+            embed = discord.Embed(title=":x: | Il n'y a aucun auto-role sur ce serveur !", color=discord.Color.red())
+
+    except EOFError:
+        embed = discord.Embed(title=":x: | Il n'y a aucun auto-role sur ce serveur !", color=discord.Color.red())
+
+    await interaction.response.send_message(embed=embed, ephemeral=True)
+
 # Cette ligne doit se trouver à la fin du fichier !
 utils_commands = [{'name': 'annonce',
                    'description': 'Cette commande permet de créer un message d\'annonce ! (Permission réquise : Administrateur)',
-                   'func': announcement_command}]
+                   'func': announcement_command},
+                  {'name':'liste-auto-role', 'description':'Donne la liste des rôles présents dans l\'auto-role du serveur.', 'func':list_auto_roles_command}]
 # Elle sert à ajouter à "l'arbre" des commandes du Bot la commande crée :
 #
 # Pour cela il faut y mettre un nouveau dictionnaire et y mettre les clés suivantes avec ce qui leur correspond en paramètre :
